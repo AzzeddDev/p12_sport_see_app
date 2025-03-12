@@ -1,20 +1,10 @@
-import { useEffect, useState } from "react"
-import { getUserInfo } from "../../api/api"
+import {useUserData} from "../../hooks/useUserHook"
 
 const UserProfile = ({ userId }: { userId: number }) => {
-    const [userData, setUserData] = useState<any>(null)
-
-    useEffect(() => {
-        const fetchData = async () => {
-            const data = await getUserInfo(userId)
-            setUserData(data)
-        }
-
-        fetchData()
-    }, [userId])
+    const { userData } = useUserData(userId)
 
     return (
-        <div>
+        <div className="profile">
             {userData ? (
                 <div>
                     <h1>Bienvenue, {userData.data.userInfos.firstName} !</h1>
