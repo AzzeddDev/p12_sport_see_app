@@ -1,19 +1,17 @@
-import UserProfile from "./components/user-profile"
-import Header from "./components/header";
-import Sidebar from "./components/sidebar";
-
+import Header from "./components/header"
+import Sidebar from "./components/sidebar"
+import Router from "./router"
+import {BrowserRouter} from "react-router-dom"
 
 function App() {
 
   return (
     <>
-        <Header/>
-        <main className={"container"}>
-            <div>
-                <UserProfile userId={12}/>
-            </div>
-        </main>
-        <Sidebar/>
+        <BrowserRouter>
+            <Header/>
+            <Router/>
+            <Sidebar/>
+        </BrowserRouter>
     </>
   )
 }
