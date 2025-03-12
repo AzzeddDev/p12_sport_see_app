@@ -1,7 +1,7 @@
 import axios from "axios"
 
 // URL database
-const API_BASE_URL = "http://localhost:3000/user"
+export const API_BASE_URL = "http://localhost:3000/user"
 
 // checker les infos
 axios.get(API_BASE_URL)
