@@ -3,6 +3,9 @@ import {useParams} from "react-router-dom"
 import ActivityChart from "../../components/charts/activity"
 import IconBox from "../../components/icon-box"
 import energyIcon from "../../assets/img/energy.svg"
+import ScoreChart from "../../components/charts/objectif";
+import HexagonChart from "../../components/charts/performance"
+import ErrorBoundary from "../../containers/error"
 
 const Dashboard = () => {
     const { id } = useParams<{ id: string }>()
@@ -21,12 +24,19 @@ const Dashboard = () => {
                 <div className="row">
                     <div className="col-md-10">
                         <ActivityChart userId={userId} />
-                        <div className="row">
+                        <div className="row pt-5">
                             <div className={"col-md-4"}>lines</div>
-                            <div className={"col-md-4"}>hexagone</div>
-                            <div className={"col-md-4"}>cercle</div>
+                            <div className={"col-md-4"}>
+                                <ErrorBoundary>
+                                    <HexagonChart userId={userId} />
+                                </ErrorBoundary>
+                            </div>
+                            <div className={"col-md-4"}>
+                                <ScoreChart userId={userId} />
+                            </div>
                         </div>
                     </div>
+
                     <div className="col-md-2">
                         <IconBox icon={energyIcon} userId={userId} title={"Calories"} dataKey="calorieCount" unit={"kCal"} iconBg={"rgba(255, 0, 0, 0.07)"} titleAlt={"Calories icon"} />
                         <IconBox icon={energyIcon} userId={userId} title={"Proteines"} dataKey="proteinCount" unit={"g"} iconBg={"rgba(74, 184, 255, 0.07)"} titleAlt={"Proteins icon"} />
