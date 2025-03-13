@@ -60,12 +60,12 @@ const CustomTooltip: React.FC<TooltipProps<number, string>> = ({ active, payload
 
 
 // @ts-ignore
-const ActivityChart = ({ userId }) => {
+const ActivityChart = ({ userId }: { userId: number }) => {
     const [data, setData] = useState([])
 
     useEffect(() => {
         const fetchData = async () => {
-            const numericUserId = parseInt(userId, 10)
+            const numericUserId = parseInt(String(userId), 10)
             const activity = await getUserActivity(numericUserId)
 
             if (activity && activity.data && activity.data.sessions) {
